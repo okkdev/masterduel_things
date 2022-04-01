@@ -50,7 +50,7 @@ defmodule IdMapper do
       }
     end)
     |> Jason.encode!()
-    |> tap(&Owl.LiveScreen.update(:status, :writing))
+    |> tap(fn _ -> Owl.LiveScreen.update(:status, :writing) end)
     |> then(&File.write!("mapped_cards.json", &1))
 
     Owl.LiveScreen.update(:status, :done)
