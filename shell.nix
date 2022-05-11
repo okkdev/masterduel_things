@@ -21,5 +21,6 @@ mkShell {
     imagemagick
     libwebp
     waifu2x
+    minio-client
   ];
 }
