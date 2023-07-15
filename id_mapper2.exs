@@ -33,7 +33,11 @@ for file <- File.ls!(art_dir) do
   card_id =
     file
     |> String.trim_trailing(".png")
-    |> String.to_integer()
+    |> Integer.parse()
+    |> case do
+        {id, _} -> id
+        _ -> 0
+    end
 
   try do
     {:ok, document} =

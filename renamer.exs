@@ -27,8 +27,12 @@ dir
     cards
     |> Enum.find_value(&if(&1["id"] == id, do: &1["konami_id"]))
     |> case do
-      nil -> "not_found_" <> file
-      id -> to_string(id) <> ".png"
+      nil ->
+        "not_found_" <> file
+
+      id ->
+        to_string(id) <> ".png"
+        # to_string(id) <> "_ocg.png"
     end
 
   File.rename!(Path.join([dir, file]), Path.join([dir, new_name]))
